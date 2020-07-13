@@ -1,3 +1,4 @@
+![RubyCriticBadge](badges/rubycritic_badge_score.svg)
 ![BrightCoders Logo](img/logo-bc.png)
 
 # Args Kata
