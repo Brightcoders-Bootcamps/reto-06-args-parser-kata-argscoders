@@ -24,4 +24,4 @@ RubyCritic::RakeTask.new do |task|
   task.paths = FileList['app/**/*.rb']
 end
 
-task default: %i[rubocop spec rubycritic sandi_meter]
+task default: %i[rubycritic sandi_meter]

@@ -11,14 +11,15 @@ class ArgsParser
   end
 
   def apexecute
+    return_value = Array.new()
     @arguments.each_with_index do |args, i|
       @register.each do |registro|
         if args == registro[0]
-          apcallback(registro, @arguments[(i + 1)..(i + registro[1])])
-          # registro[2].call
+          return_value << apcallback(registro, @arguments[(i + 1)..(i + registro[1])])
         end
       end
     end
+    return_value
   end
 
   private
@@ -27,14 +28,10 @@ class ArgsParser
     # 0 = flag
     # 1 = no. de argumentos de funcion
     # 2 = callback
-
-    case argv[1]
-    when 0 then argv[2].call
-    when 1 then argv[2].call(args[0])
-    when 2 then argv[2].call(args[0], args[1])
-    when 3 then argv[2].call(args[0], args[1], args[2])
-    when 4 then argv[2].call(args[0], args[1], args[2], args[3])
-    when 5 then argv[2].call(args[0], args[1], args[2], args[4], args[5])
+    begin
+      return (args.length == argv[1]) ? argv[2].call(*args) : true
+    rescue
+      return true
     end
   end
 end
